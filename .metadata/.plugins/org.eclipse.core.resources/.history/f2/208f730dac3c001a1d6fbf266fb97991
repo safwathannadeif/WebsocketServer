@@ -1,0 +1,15 @@
+package com.shd.server.startup;
+
+import javax.websocket.MessageHandler;
+
+public class ExtMessageHandler implements MessageHandler.Whole<String>
+{
+	public ExtMessageHandler()
+	{
+		
+	}
+	@Override
+    public void onMessage(String message) {
+        System.out.println("inMessage From ExtMessageHandler=" + message ) ;
+}
+}

@@ -1,0 +1,46 @@
+package com.shd.server.startup;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ConfigServerEndpoint {
+	private String endpointClass 	;
+	private String path4endpointClass  ;
+	private 
+	List<ConfigServerEndpoint> aryList=new ArrayList<ConfigServerEndpoint>(); 
+	public ConfigServerEndpoint()
+	{
+		
+	}
+	public ConfigServerEndpoint(String endpointClass, String path4endpointClass) {
+		this.endpointClass = endpointClass;
+		this.path4endpointClass = path4endpointClass;
+	}
+	public String getEndpointClass() {
+		return endpointClass;
+	}
+	public void setEndpointClass(String endpointClass) {
+		this.endpointClass = endpointClass;
+	}
+	public String getPath4endpointClass() {
+		return path4endpointClass;
+	}
+	public void setPath4endpointClass(String path4endpointClass) {
+		this.path4endpointClass = path4endpointClass;
+	}
+	@Override
+	public String toString() {
+		return "ConfigServerEndpoint [endpointClass=" + endpointClass + ", path4endpointClass=" + path4endpointClass
+				+ "]";
+	}
+	public void genertae()
+	{
+		ConfigServerEndpoint configServerEndpointi = new ConfigServerEndpoint("Class1","Path1") ;
+		aryList.add(configServerEndpointi) ;
+		configServerEndpointi = new ConfigServerEndpoint("Class2","Path2") ;
+		aryList.add(configServerEndpointi) ;
+		configServerEndpointi = new ConfigServerEndpoint("Class2","Path2") ;
+		aryList.add(configServerEndpointi) ;
+		
+	}
+}

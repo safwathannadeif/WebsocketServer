@@ -1,0 +1,64 @@
+package com.shd.server.processing;
+import java.lang.reflect.Method;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
+
+import javax.websocket.Session;
+
+import com.google.gson.Gson;
+import com.shd.server.Ref2Singleton;
+import com.shd.common.msgelms.Header;
+import com.shd.common.msgelms.Wrap;
+import com.shd.server.annoatations.AttrsBeanReqResp;
+import com.shd.server.sendmsgs.SendToClientImp;
+import com.shd.server.sendmsgs.ThredLocalContents;
+
+
+public class AsyncExecReqResp {
+	private String uriInpRequestResp = null;
+	private String wrapInpJonStr = null;
+	private String reqRespId = null;
+	private Session session = null;
+    private Future<?> future ;
+	
+	public void doRequestRespFromCliAsyn(String wrapReqStr, Session sessioni ) {
+		session = sessioni ;
+
+		Gson gson = new Gson();
+		Wrap wraprequest = gson.fromJson(wrapReqStr, Wrap.class);
+		reqRespId =wraprequest.getHeader().getReqResId() ;
+		uriInpRequestResp = wraprequest.getHeader().getUriRequest();
+		wrapInpJonStr = wrapReqStr; 
+		future =Ref2Singleton.ONEINSREF.getExecService().submit(lampdaAsyncServer) ;
+	}
+Callable<?> lampdaAsyncServer = () -> {
+Exception exception = null;
+try {
+	
+	AttrsBeanReqResp attr =Ref2Singleton.ONEINSREF.getURIMap().getAttrsBeanReqResp(uriInpRequestResp) ;
+	Method mInjectReqBExtractResp = attr.getInjectAndExtractMethod() ;
+	Class<?> classTypeForReq = mInjectReqBExtractResp.getParameterTypes()[0];//To Do Chk for No Input Param
+	//
+	Gson gson = new Gson();
+	Wrap wrapReq = gson.fromJson(wrapInpJonStr, Wrap.class);
+	Header headerReq = wrapReq.getHeader();
+	reqRespId = headerReq.getReqResId();
+
+	Object inReqObj = gson.fromJson(wrapReq.getJsonStrmsg(), classTypeForReq);
+	Class<?> classReqResp = attr.getReqRespClass();
+	Object reqRespObj = classReqResp.getConstructor().newInstance();
+	SendToClientImp sendToClientImp = new SendToClientImp(session,reqRespId,future,uriInpRequestResp);
+	ThredLocalContents.createObject(sendToClientImp); 
+	Object objRespone = mInjectReqBExtractResp.invoke(reqRespObj,inReqObj);
+	if ( !future.isCancelled() ) sendToClientImp.sendFinalResponse(objRespone);
+} catch (Exception e) {
+	e.printStackTrace();
+	exception = e;
+}
+finally {
+	ThredLocalContents.removeObject() ;
+}
+return exception;
+};
+}
+   

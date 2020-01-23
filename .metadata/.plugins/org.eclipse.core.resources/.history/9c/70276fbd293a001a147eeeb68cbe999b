@@ -1,0 +1,60 @@
+package com.shd.common.properties;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+
+
+//https://www.geeksforgeeks.org/java-8-biconsumer-interface-in-java-with-examples/
+public class ReadAndCaptureProps {
+	@FunctionalInterface
+	public interface Function3(String , String, HashMap<String, String>) 
+	{
+		
+		public Map<String, String> applyIt(String str1, String str2);
+	  
+	} ;
+	
+public	TriFunction< String , String, Map<String, String> > readAndUpdProprsi = (propsDir, propFileName) -> 
+    { 
+    	Path filePath = Paths.get(propsDir.trim(), propFileName.trim());
+    	Map<String, String> hashMap = new HashMap<>();
+        System.out.println("PropFile=[" +filePath.toString() +"]") ;
+         try {
+			Files.lines(filePath)
+			 .filter(str-> !str.startsWith("#"))
+			.forEach(line -> {
+				String[] str2 = line.split("=") ;
+				 hashMap.put(str2[0].trim(), str2[1].trim()) ;
+			}	
+			);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+
+    	
+    } ;
+
+
+@SuppressWarnings("rawtypes")
+public Function<Map, String> displpropi = (map)  -> {
+	String dispProps = hashMap.entrySet() 
+			         .stream()
+			         .map(e -> e.getKey() + "=\"" + e.getValue() + "\"" )
+			         .collect(Collectors.joining("\n"));	
+	return dispProps ;
+	
+	
+}  ;
+//
+public Map<String, String> getHashMap() {
+	return hashMap;
+}
+}
+

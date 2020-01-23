@@ -1,0 +1,3 @@
+-1	cd  C:\WSServer2\WSServer2\Server\target
+-2  java -DServerPropsDir="C:/WebSockt_WrkDirec/Server/Properties" -jar Server-1.0-jar-with-dependencies.jar
+Not:  the Property file[ServerGen.propertie]  for Server located in C:\WebSockt_WrkDirec\Server\Properties  

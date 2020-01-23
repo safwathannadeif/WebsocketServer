@@ -1,0 +1,103 @@
+//package com.shd.server.startup;
+//
+//import javax.servlet.ServletContextEvent;
+//
+//import javax.servlet.ServletContextListener;
+//
+//import javax.servlet.annotation.WebListener;
+//
+//
+//import javax.websocket.DeploymentException;
+//
+//import javax.websocket.OnMessage;
+//
+//import javax.websocket.server.ServerContainer;
+//
+//import javax.websocket.server.ServerEndpoint;
+//
+//
+//@WebListener
+//
+//@ServerEndpoint("/annotated")
+//
+//public class Try implements ServletContextListener {
+//
+//
+//
+//    @Override
+//
+//
+//    public void contextInitialized(ServletContextEvent servletContextEvent) {
+//
+//        final ServerContainer serverContainer = (ServerContainer) servletContextEvent.getServletContext()
+//
+//                                                    .getAttribute("javax.websocket.server.ServerContainer");
+//
+//
+//	
+//
+//        try {
+//
+//
+//
+//	
+//
+//            serverContainer.addEndpoint(Try.class);
+//
+//
+//
+//	
+//
+//        } catch (DeploymentException e) {
+//
+//
+//
+//	
+//
+//            e.printStackTrace();
+//
+//
+//
+//	
+//
+//        }
+//
+//
+//	
+//
+//    }
+//
+//
+//
+//	
+//
+//    @OnMessage
+//
+//	
+//
+//    public String onMessage(String message) {
+//
+//
+//	
+//
+//        return message;
+//
+//
+//
+//	
+//
+//    }
+//
+//
+//
+//	
+//
+//
+//	
+//
+//    @Override
+//
+//    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+//	
+//
+//    }

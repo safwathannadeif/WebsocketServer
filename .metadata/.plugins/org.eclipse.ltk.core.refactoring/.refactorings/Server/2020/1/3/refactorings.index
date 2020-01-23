@@ -1,0 +1,9 @@
+1578850873444	Rename type 'SendToClient'
+1578852393635	Extract interface 'SendToClientIF'
+1578944638695	Delete element
+1579046941834	Move compilation unit
+1579047291391	Rename type 'GenertaeLisOfEmployee'
+1579221830594	Delete element
+1579367648213	Move package
+1579379907277	Rename type 'ThenApply'
+1579383082557	Rename compilation unit 'FunctionTRAndThenExample.java'

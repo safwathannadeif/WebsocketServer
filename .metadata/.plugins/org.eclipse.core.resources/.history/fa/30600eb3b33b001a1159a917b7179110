@@ -1,0 +1,5 @@
+package com.shd.server.startup.serverconfigured;
+
+public class EchoEndpointConfig {
+
+}

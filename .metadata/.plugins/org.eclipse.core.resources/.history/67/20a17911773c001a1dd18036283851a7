@@ -1,0 +1,30 @@
+//package com.shd.server.startup;
+//
+//import java.util.Collections;
+//import java.util.HashSet;
+//import java.util.Set;
+//
+//import javax.websocket.Endpoint;
+//import javax.websocket.server.ServerApplicationConfig;
+//import javax.websocket.server.ServerEndpointConfig;
+//
+//
+//public class CustomServerAppConfigProvider implements ServerApplicationConfig {
+//
+//    @Override
+//    public Set<ServerEndpointConfig> getEndpointConfigs(Set<Class<? extends Endpoint>> endpointClasses) {
+//        Set<ServerEndpointConfig> result = new HashSet<>();
+//        
+//                ServerEndpointConfig sec = ServerEndpointConfig.Builder.create(ProgrammaticEchoEnpoint.class, "/letschat").build();
+//                result.add(sec);
+//        System.out.println("XXXXXXXXXXXX ProgrammaticEchoEnpoint is here") ;   
+//        return result;
+//    }
+//
+//    @Override
+//    public Set<Class<?>> getAnnotatedEndpointClasses(Set<Class<?>> scanned) {
+//        return Collections.emptySet();
+//    }
+//}
+//https://tyrus-project.github.io/documentation/1.13.1/user-guide.html#websocket-programmatic-endpoint
+//  Deployment of Annotated Endpoint Using ServerContainer

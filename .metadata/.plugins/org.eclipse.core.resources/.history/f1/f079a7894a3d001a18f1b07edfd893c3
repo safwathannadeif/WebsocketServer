@@ -1,0 +1,22 @@
+{
+  "aryList": [
+    {
+      "endpointClass": "Class1",
+      "path4endpointClass": "Path1",
+      "comment": "Comment1"
+     
+    },
+    {
+      "endpointClass": "Class2",
+      "path4endpointClass": "Path2",
+      "comment": "Comment2"
+     
+    },
+    {
+      "endpointClass": "Class3",
+      "path4endpointClass": "Path3",
+      "comment": "Comment3"
+    
+    }
+  ]
+}

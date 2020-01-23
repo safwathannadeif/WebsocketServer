@@ -1,0 +1,10 @@
+package com.shd.server.startup;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ConfigServerEndpoints {
+	List<EndpointCfg> aryList=new ArrayList<EndpointCfg>(); 
+	String hostIp ="server1" ;
+	Integer post = 18080 ;
+}

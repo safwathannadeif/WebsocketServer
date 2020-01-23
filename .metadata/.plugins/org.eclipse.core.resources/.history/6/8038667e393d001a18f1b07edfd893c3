@@ -1,0 +1,8 @@
+package com.shd.server.startup;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ConfigServerEndpoints {
+	List<EndpointCfg> aryList=new ArrayList<EndpointCfg>(); 
+}

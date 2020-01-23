@@ -1,0 +1,11 @@
+package com.shd.server.startup;
+
+import javax.websocket.server.ServerEndpointConfig;
+
+public class ExtendServerEndpoint implements ServerEndpointConfig
+{
+	public String value()
+	{
+		return null ;
+	}
+}

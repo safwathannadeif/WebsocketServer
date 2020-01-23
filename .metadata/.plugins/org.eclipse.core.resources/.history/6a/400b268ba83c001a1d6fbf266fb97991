@@ -1,0 +1,57 @@
+package com.shd.server.startup;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+
+import javax.websocket.OnClose;
+import javax.websocket.OnError;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.PongMessage;
+import javax.websocket.Session;
+import javax.websocket.server.ServerEndpoint;
+
+import com.shd.server.Ref2Singleton;
+import com.shd.server.processing.AsyncExecReqResp ;
+
+
+
+@ServerEndpoint(value="/test1" )
+//@ServerEndpoint(value="/" )
+public class ServerEndPt1 {
+	Session session = null ;
+	String reqRespId = null ;
+	@OnOpen
+	public void open (Session session) throws IOException {
+		this.session =session ;
+		Ref2Singleton.ONEINSREF.getServLogger().info("Server Session id:[" + session.getId() +"]") ;
+		session.getBasicRemote().sendPong((ByteBuffer.wrap(("Pong from EndPt Open:" + session.getId().toString()).getBytes()))) ;
+
+	}   
+	@OnMessage
+	public void msg(String m) {
+		try {
+			Ref2Singleton.ONEINSREF.getServLogger().info("Server msg recv Length:[" + m.length()+"]") ;
+			AsyncExecReqResp asyncExecReqResServer = new AsyncExecReqResp() ;
+			asyncExecReqResServer.doRequestRespFromCliAsyn(m, session) ; 			
+		} catch (Exception ex) {
+			Ref2Singleton.ONEINSREF.getServLogger().severe("Exception:\n" + Ref2Singleton.ONEINSREF.expToStr(ex) );
+		}
+	}
+	@OnClose
+	public void onClose(Session session) {
+
+		Ref2Singleton.ONEINSREF.getServLogger().severe("onClose For Session ::" +  session.getId() +  " Closed?");
+	}
+
+	@OnMessage 
+	public void msg(PongMessage pongMessage) {
+		StringBuffer pong = new StringBuffer();
+		pong.append(": pong message: ").append(new String(pongMessage.getApplicationData().array()));
+		Ref2Singleton.ONEINSREF.getServLogger().info("Server Session id:[" + session.getId() +"] PongRecv:" + pong.toString() ) ;
+	}
+	@OnError
+	public void onError(Throwable t) {
+		Ref2Singleton.ONEINSREF.getServLogger().severe("onError Recved Throwable:\n" + t.toString() + "\n Message:" + t.getMessage());
+	}
+
+}

@@ -1,0 +1,62 @@
+package com.shd.server.startup.serverconfigured;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.websocket.Decoder;
+import javax.websocket.Encoder;
+import javax.websocket.Extension;
+import javax.websocket.server.ServerEndpointConfig;
+
+import com.shd.server.startup.ServerEndPt1;
+
+public class EchoEndpointConfig implements ServerEndpointConfig{
+
+   private final Map<String, Object> userProperties = new HashMap<String, Object>();
+
+    @Override
+    public Class<?> getEndpointClass() {
+        return ServerEndPt1.class;
+    }
+
+    @Override
+    public String getPath() {
+        return "/echo";
+    }
+
+    @Override
+    public List<String> getSubprotocols() {
+        return Arrays.asList("echo1","echo2");
+    	
+        
+    }
+
+    @Override
+    public List<Extension> getExtensions() {
+        return null;
+    }
+
+    @Override
+    public Configurator getConfigurator() {
+        return null;
+    }
+
+    @Override
+    public List<Class<? extends Encoder>> getEncoders() {
+        //return Arrays.asList(SampleEncoder.class);
+        return null ;
+    }
+
+    @Override
+    public List<Class<? extends Decoder>> getDecoders() {
+       // return Arrays.asList(SampleDecoder.class);
+    	return null ;
+    }
+
+    @Override
+    public Map<String, Object> getUserProperties() {
+        return userProperties;
+    }
+}

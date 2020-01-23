@@ -1,0 +1,60 @@
+package com.shd.server.startup;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+import java.util.ResourceBundle;
+import java.util.concurrent.CountDownLatch;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import javax.websocket.DeploymentException;
+
+import org.glassfish.tyrus.server.Server;
+
+import com.shd.common.properties.ReadAndCaptureProps;
+import com.shd.server.Ref2Singleton;
+public class MainServer {
+public static void main(String[] args) throws  IOException, InterruptedException, DeploymentException, NoSuchAlgorithmException {
+	
+	//-DServerPropsDir="C:/WSServer2/WSServer2/Server/src/main/resources" where VM argument is: -DServerPropsDir="C:/WSServer2/WSServer2/Server/src/main/resources"
+	String serverPropsDir =System.getProperty("ServerPropsDir");
+	String propFile =  "ServerGen.properties" ;
+	System.out.println("PropFileDirectory=[" + serverPropsDir +"]") ;
+	ReadAndCaptureProps readAndCaptureProps = new ReadAndCaptureProps () ; 
+	//String displProps = readAndCaptureProps.displpropi.applyIt(readAndCaptureProps.readAndUpdProprsi.applyIt(serverPropsDir, propFile)) ;
+	//Compose it: output of readAndUpdProprsi pipe/inject  as input to displpropi
+	System.out.println("Prop Captured1 :\n" + readAndCaptureProps.displpropi.apply2(readAndCaptureProps.readAndUpdProprsi.apply1(serverPropsDir, propFile))) ;  
+	//*******************
+	String propStrToDisply = readAndCaptureProps.readAndUpdProprsi1.andThen(readAndCaptureProps.dsplpropi2).apply(serverPropsDir,propFile);
+	System.out.println("Prop Captured1 :\n" + readAndCaptureProps.displpropi.apply2(readAndCaptureProps.readAndUpdProprsi.apply1(serverPropsDir, propFile))) ;  
+	//*******************
+	//Map<String,String> mspout = readAndCaptureProps.readAndUpdProprsi.applyIt(serverPropsDir, propFile) ;
+	//System.out.println("Prop Captured :\n" + readAndCaptureProps.displpropi.applyIt(mspout)) ; 
+	// .applyIt(serverPropsDir, propFile). andThen(readAndCaptureProps.displpropi)
+	readAndCaptureProps = null ;
+	//applyIt(serverPropsDir, propFile)..
+	//.accept(serverPropsDir,propFile);
+	
+	//System.out.println(readAndCaptureProps.displpropi.apply(readAndCaptureProps.getHashMap())) ;
+	
+	
+	Server server1 = new Server("localhost", 8080, "", null, ServerEndPt1.class);
+	ScanAndCapAnnotation scanAndCapAnnotation = new ScanAndCapAnnotation() ;
+	scanAndCapAnnotation.scanAnot();
+	scanAndCapAnnotation.capAnot() ;
+	Ref2Singleton.ONEINSREF.getURIMap().printURIMapToReqRespAnnoted();
+	//URIMap.printReqRespAnnoted();
+	server1.start();
+	Ref2Singleton.ONEINSREF.getServLogger().info("Server Started ...") ;
+	new CountDownLatch(1).await();  //Wait and Keep Server Up
+}
+		   
+}
+

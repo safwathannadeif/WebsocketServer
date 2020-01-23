@@ -1,0 +1,61 @@
+package com.shd.gen.rwfiles;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
+
+//import com.shd.server.Ref2Singleton;
+
+public class WriteReqRespJsonMsgs {
+	
+	private  String   filePrefix= "ReqResp_" ;
+	private  String   inpHeader = "C:/WebSockt_WrkDirec/Server/ReqRespMsgs" ;
+	
+	public static void main(String[] args) throws IOException {
+		WriteReqRespJsonMsgs ws = new WriteReqRespJsonMsgs() ;
+		int iRetMax =ws.getNextSeqForWrite(ws.getInpHeader()) ;
+		System.out.println("iRetMax =" + iRetMax ) ;
+		String newDirec = ws.getInpHeader()+"/"+ws.getFilePrefix()+String.valueOf(iRetMax+1) ;
+		Path pathNew = Paths.get(newDirec);
+		Files.createDirectories(pathNew);
+		System.out.println("Created =[" + newDirec + "]" ) ;
+	}
+	
+	public void createNewDir(String inpHeader )
+	{
+		
+	}
+	private int getNextSeqForWrite(String fqDirName) throws IOException
+	{
+		//Pattern ReqResp_nn we need to the Max nn for ReqResp Directories
+		
+		Stream<Path> walk = Files.walk(Paths.get(fqDirName)) ;
+		int maxToRet =  walk.filter(Files::isDirectory)
+				    .peek(xxxx -> System.out.println("xxxx.toString()" + xxxx.toString()))
+					.map(x -> x.getFileName().toString() )
+					.filter(f -> f.contains(filePrefix))
+					.peek(fn -> System.out.println("fnOnly[" + fn +']'))
+					//.mapToInt(xx -> Integer.valueOf(xx.substring(xx.indexOf("_") +1)))
+					.mapToInt(xx -> Integer.valueOf(xx.replace(filePrefix, "")))
+					 .peek(iii -> System.out.println("iii" + iii ))
+				    .max().orElse(0) ;
+	  return maxToRet ;
+	}
+	public void setFilePrefix(String filePrefix) {
+		this.filePrefix = filePrefix;
+	}
+	public void setInpHeader(String inpHeader) {
+		this.inpHeader = inpHeader;
+	}
+	public String getFilePrefix() {
+		return filePrefix;
+	}
+
+	public String getInpHeader() {
+		return inpHeader;
+	}
+
+}

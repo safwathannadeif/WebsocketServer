@@ -1,0 +1,48 @@
+{
+  "endPoints": [
+    {
+      "endpointClass": "Class1",
+      "path4EndpointClass": "Path1",
+      "clientNumOfPersistenceConnections": 15,
+      "comment": "Comment1"
+    },
+    {
+      "endpointClass": "Class2",
+      "path4EndpointClass": "Path2",
+      "clientNumOfPersistenceConnections": 20,
+      "comment": "Comment2"
+    },
+    {
+      "endpointClass": "Class3",
+      "path4EndpointClass": "Path3",
+      "clientNumOfPersistenceConnections": 11,
+      "comment": "Comment3"
+    }
+  ],
+  "hostIp": "localhost",
+  "port": 800
+}
+retStr: {
+  "endPoints": [
+    {
+      "endpointClass": "Class1",
+      "path4EndpointClass": "Path1",
+      "clientNumOfPersistenceConnections": 15,
+      "comment": "Comment1"
+    },
+    {
+      "endpointClass": "Class2",
+      "path4EndpointClass": "Path2",
+      "clientNumOfPersistenceConnections": 20,
+      "comment": "Comment2"
+    },
+    {
+      "endpointClass": "Class3",
+      "path4EndpointClass": "Path3",
+      "clientNumOfPersistenceConnections": 11,
+      "comment": "Comment3"
+    }
+  ],
+  "hostIp": "localhost",
+  "port": 800
+}

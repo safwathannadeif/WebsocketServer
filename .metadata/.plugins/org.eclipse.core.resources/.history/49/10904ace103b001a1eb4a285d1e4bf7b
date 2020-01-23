@@ -1,0 +1,44 @@
+package com.shd.common.msgelms ; 
+public class Header {
+private String uriRequest ;
+private String reqResId ;
+private MesgTypes msgType ;
+private String jsonStrmsg;
+public String getJsonStrmsg() {
+	return jsonStrmsg;
+}
+public void setJsonStrmsg(String jsonStrmsg) {
+	this.jsonStrmsg = jsonStrmsg;
+}
+public String getClassType4jsonStrmsg() {
+	return classType4jsonStrmsg;
+}
+public void setClassType4jsonStrmsg(String classType4jsonStrmsg) {
+	this.classType4jsonStrmsg = classType4jsonStrmsg;
+}
+private String classType4jsonStrmsg ;
+public String getReqResId() {
+	return reqResId;
+}
+public MesgTypes getMsgType() {
+	return msgType;
+}
+public void setReqResId(String reqResId) {
+	this.reqResId = reqResId;
+}
+public void setMsgType(MesgTypes msgType) {
+	this.msgType = msgType;
+}
+public String getUriRequest() {
+	return uriRequest;
+}
+public void setUriRequest(String uriRequest) {
+	this.uriRequest = uriRequest;
+}
+@Override
+public String toString() {
+	return "Header [reqResId=" + reqResId + ", msgType=" + msgType + "]";
+} 
+	
+
+}

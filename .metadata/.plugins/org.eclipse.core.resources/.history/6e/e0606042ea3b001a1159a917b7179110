@@ -1,0 +1,70 @@
+package com.shd.server.startup;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.websocket.Decoder;
+import javax.websocket.Encoder;
+import javax.websocket.Endpoint;
+import javax.websocket.EndpointConfig;
+import javax.websocket.Extension;
+import javax.websocket.server.ServerEndpointConfig; 
+import javax.websocket.Session;
+
+public class ProgrammaticEndpointOne extends  ServerEndpointConfig {
+
+	@Override
+	public List<Class<? extends Encoder>> getEncoders() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Class<? extends Decoder>> getDecoders() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Map<String, Object> getUserProperties() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Class<?> getEndpointClass() {
+		// TODO Auto-generated method stub
+		return ServerEndPt1.class;
+	}
+
+	@Override
+	public String getPath() {
+		// TODO Auto-generated method stub
+		return "/testXX";
+	}
+
+	@Override
+	public List<String> getSubprotocols() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Extension> getExtensions() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Configurator getConfigurator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void onOpen(Session session, EndpointConfig config) {
+		// TODO Auto-generated method stub
+		
+	}
+    
+}

@@ -1,0 +1,55 @@
+package com.shd.server.startup;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+public class ConfigServerEndpoint {
+	private String endpointClass 	;
+	private String path4endpointClass  ;
+	private String comment ;
+	List<ConfigServerEndpoint> aryList=new ArrayList<ConfigServerEndpoint>(); 
+	public ConfigServerEndpoint()
+	{
+		
+	}
+	public ConfigServerEndpoint(String endpointClass, String path4endpointClass, String comment) {
+		this.endpointClass = endpointClass;
+		this.path4endpointClass = path4endpointClass;
+		this.comment = comment;
+	}
+	public String getEndpointClass() {
+		return endpointClass;
+	}
+	public void setEndpointClass(String endpointClass) {
+		this.endpointClass = endpointClass;
+	}
+	public String getPath4endpointClass() {
+		return path4endpointClass;
+	}
+	public void setPath4endpointClass(String path4endpointClass) {
+		this.path4endpointClass = path4endpointClass;
+	}
+	@Override
+	public String toString() {
+		return "ConfigServerEndpoint [endpointClass=" + endpointClass + ", path4endpointClass=" + path4endpointClass
+				+ "]";
+	}
+	public String genertae()
+	{
+		ConfigServerEndpoint ret = new ConfigServerEndpoint() ;
+		ConfigServerEndpoint configServerEndpointi = new ConfigServerEndpoint("Class1","Path1","Comment1") ;
+		ret.aryList.add(configServerEndpointi) ;
+		configServerEndpointi = new ConfigServerEndpoint("Class2","Path2","Comment2") ;
+		ret.aryList.add(configServerEndpointi) ;
+		configServerEndpointi = new ConfigServerEndpoint("Class3","Path3","Comment3") ;
+		ret.aryList.add(configServerEndpointi) ;
+		
+		Gson gsonPretty = new GsonBuilder().setPrettyPrinting().create();
+		String pStr = gsonPretty.toJson(ret) ;
+		System.out.println(pStr) ;
+		return pStr ;
+	}
+}

@@ -1,0 +1,9 @@
+*.class
+*.projects
+*.prefs
+*.project
+.metadata
+.History
+.target
+.history
+target/
