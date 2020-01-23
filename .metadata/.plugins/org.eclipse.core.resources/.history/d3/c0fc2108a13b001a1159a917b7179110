@@ -1,7 +1,0 @@
-#
-ExecutorServiceNoOfThreads=35
-pkgsToScan = com.shd,com.shd.common.reqresp,com.google.gson
-#
-XX=2
-YYY=3
-##############

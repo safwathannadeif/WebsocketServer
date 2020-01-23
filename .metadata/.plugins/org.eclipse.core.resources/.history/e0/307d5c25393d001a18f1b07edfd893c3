@@ -1,8 +1,0 @@
-package com.shd.server.startup;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class ConfigServerEndpoints {
-	List<ConfigServerEndpoint> aryList=new ArrayList<ConfigServerEndpoint>(); 
-}

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy>
-    <typeInfo handle="=Server/src\/main\/java&lt;com.shd.server.startup{MainServer.java[MainServer" modifiers="1" timestamp="1579733165159"/>
-    <typeInfo handle="=Server/C:\/Users\/safwat\/.m2\/repository\/javax\/websocket\/javax.websocket-api\/1.1\/javax.websocket-api-1.1.jar&lt;javax.websocket.server(ServerEndpointConfig.class[ServerEndpointConfig" modifiers="1537" timestamp="1572978625520"/>
-    <typeInfo handle="=Server/C:\/Users\/safwat\/.m2\/repository\/javax\/websocket\/javax.websocket-api\/1.1\/javax.websocket-api-1.1.jar&lt;javax.websocket.server(ServerContainer.class[ServerContainer" modifiers="1537" timestamp="1572978625520"/>
-    <typeInfo handle="=Server/C:\/Users\/safwat\/.m2\/repository\/javax\/websocket\/javax.websocket-api\/1.1\/javax.websocket-api-1.1.jar&lt;javax.websocket.server(DefaultServerEndpointConfig.class[DefaultServerEndpointConfig" modifiers="48" timestamp="1572978625520"/>
-</typeInfoHistroy>

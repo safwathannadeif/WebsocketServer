@@ -1,4 +1,0 @@
-package com.shd.server.startup;
-public class ProgrammaticEndpointOne extends Endpoint {
-    ...
-}

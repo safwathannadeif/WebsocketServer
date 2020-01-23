@@ -1,6 +1,0 @@
-package com.shd.server.startup;
-
-public class ConfigServerEndpoint {
-	String endpointClass 			;
-	String path4endpointClass         ;
-}
